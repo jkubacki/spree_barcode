@@ -2,8 +2,8 @@ class BarcodesController < ApplicationController
 
 
   def variant
-    variant = Spree::Variant.find(params[:id])
-    BarcodeGenerator.barcode_variant(variant, params[:quantity])
+    variant = Spree::Variant.find(barcodes_params[:id])
+    BarcodeGenerator.barcode_variant(variant, barcodes_params[:quantity])
   end
 
   def barcodes_params
