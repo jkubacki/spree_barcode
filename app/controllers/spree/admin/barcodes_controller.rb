@@ -11,13 +11,15 @@ class Spree::Admin::BarcodesController < Spree::Admin::BaseController
     require 'barby/outputter/png_outputter'
     require 'barby/barcode/code_128'
     barcode = Barby::Code128B.new(variant.id.to_s.rjust(8, '0'))
-    location = "./app/assets/images/barcodes/#{variant.id}-small.png"
+    location = "uploads/barcodes/#{variant.id}-small.png"
+
     File.open(location, 'w'){|f| f.write barcode.to_png({height: 35, margin: 2}) }
 
     barcodes = render_to_string layout: false
 
     require "prawn"
-    Prawn::Document.generate("/home/kuba/Dropbox/hello#{Time.now.to_s}.pdf", :margin => 3, page_size: [145, 80]) do
+    pdf_location = "uploads/temps/barcode.pdf"
+    Prawn::Document.generate(pdf_location, :margin => 3, page_size: [145, 80]) do
       font_families.update("Open Sans"=>{:normal => "./app/assets/fonts/open_sans.ttf"})
       font_families.update("Open Sans Bold"=>{:normal => "./app/assets/fonts/open_sans_bold.ttf"})
       quantity.times do |i|
@@ -47,8 +49,8 @@ class Spree::Admin::BarcodesController < Spree::Admin::BaseController
         start_new_page unless i == (quantity - 1)
       end
     end
-
-    render layout: false
+    send_file pdf_location
+    File.delete pdf_location
   end
 
   def barcodes_params

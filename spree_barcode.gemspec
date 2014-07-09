@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.email     = 'kubacki.jk@gmail.com'
   s.homepage  = 'https://github.com/jkubacki'
 
-  #s.files       = `git ls-files`.split("\n")
-  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  #s.uploads       = `git ls-uploads`.split("\n")
+  #s.test_files  = `git ls-uploads -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
