@@ -1,9 +1,9 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_redbox'
+  s.name        = 'spree_barcode'
   s.version     = '2.2.2'
-  s.summary     = 'Spree extenstion for simple barcode generation.'
+  s.summary     = 'spree extenstion for simple barcode generation.'
   s.required_ruby_version = '>= 1.9.3'
 
   s.author    = 'Jakub Kubacki'
@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core', '~> 2.2.2'
+  s.add_dependency 'barby'
+  s.add_dependency 'prawn'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'

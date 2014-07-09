@@ -1,0 +1,13 @@
+%html
+  %head
+    = stylesheet_link_tag('spree/backend/spree_barcode')
+    -#%link{rel: 'stylesheet', type: 'text-css', href: }
+  %body
+    - @quantity.to_i.times do |no|
+      #barcode-tag-small
+        = @variant.name
+        #barcode
+          = image_tag "barcodes/#{@variant.id}-small.png"
+        #data
+          %span{id: 'sku'}= @variant.sku
+          %span{id: 'code'}= @code
