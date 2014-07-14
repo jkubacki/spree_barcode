@@ -1,0 +1,4 @@
+= simple_form_for :barcode_form, method: :get, url: '/admin/variants/barcodes' do |f|
+  = f.input :sku_text, required: false, label: 'Symbol'
+  = f.input :sku, required: false, collection: @skus, as: :select, input_html: {class: 'select2'}, label: 'Symbol'
+  = f.button :submit, 'Generuj kod'
