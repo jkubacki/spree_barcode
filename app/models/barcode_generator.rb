@@ -9,7 +9,7 @@ class BarcodeGenerator
     puts input_filenames.inspect
     require 'zip'
     zipfile_name = 'uploads/barcodes/barcodes.zip'
-    FileUtils.rm zipfile_name
+    FileUtils.rm zipfile_name if File.exists? zipfile_name
     Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
       input_filenames.each do |filename|
         # Two arguments:
