@@ -1,9 +1,10 @@
+= render partial: 'spree/admin/shared/product_sub_menu'
 %p
 
-= simple_form_for :barcode_form, method: :get, url: '/admin/variants/barcodes' do |f|
+= simple_form_for :barcode_form, method: :post, url: admin_barcodes_path do |f|
   = f.input :sku_text, required: false, label: 'Symbol', placeholder: '#P100 #G101 #R12^ ...',
     input_html: {style: 'margin: 10px;', title: 'Można oddzielać symbole spacją.Po wpisaniu symbolu produktu z wariantami (np. #P43^) wygenerują się kody dla wszystkich wariantów. (#P43^a #P43^b ...)'}
   = f.input :sku, required: false, collection: @skus, as: :select, input_html: {class: 'select2'}, label: 'Symbol'
   = f.button :submit, 'Generuj kod'
 %p{style: 'margin: 10px;'}
-  = button_to 'Pobierz zip.', admin_variants_barcodes_zip_path
+  = button_to 'Pobierz zip.', admin_barcodes_zip_path
