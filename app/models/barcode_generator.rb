@@ -42,7 +42,7 @@ class BarcodeGenerator
         text "#{variant.sku}", align: :center
 
         move_down 2
-        font_size 5
+        font_size 6
         font 'Open Sans'
         bounding_box([0, cursor], width: 145, height: 13, overflow: :turncate) do
           text variant.name, align: :center
