@@ -2,7 +2,7 @@ class Spree::Admin::BarcodesController < Spree::Admin::BaseController
 
   def variant
     skus = barcodes_params[:barcode_form][:sku].split
-    if skus.blank? then skus = barcodes_params[:barcode_form][:sku_text].split end
+    if skus.blank? then skus = barcodes_params[:barcode_form][:sku_text].split(',') end
     barcode_generator = BarcodeGenerator.new
     errors = []
     files = []
