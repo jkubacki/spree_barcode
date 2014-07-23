@@ -6,7 +6,10 @@ class Spree::Admin::BarcodesController < Spree::Admin::BaseController
     barcode_generator = BarcodeGenerator.new
     errors = []
     files = []
+
     pdf_location = 'uploads/barcodes/pdf'
+    Dir.mkdir pdf_location unless Dir.exists? pdf_location
+
     skus.each do |sku|
       if Spree::Variant.exists?(sku: sku)
         variant = Spree::Variant.find_by(sku: sku)

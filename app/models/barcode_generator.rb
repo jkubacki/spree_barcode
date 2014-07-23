@@ -76,7 +76,9 @@ class BarcodeGenerator
     require 'barby/outputter/png_outputter'
     require 'barby/barcode/code_128'
     barcode = Barby::Code128B.new(variant.id.to_s.rjust(8, '0'))
-    location = "uploads/barcodes/#{variant.id}-small.png"
+    dir = 'uploads/barcodes/'
+    Dir.mkdir dir unless Dir.exists? dir
+    location = "#{dir}/#{variant.id}-small.png"
     File.open(location, 'w') { |f| f.write barcode.to_png({height: height, margin: margin}) }
     return location, barcode
   end
