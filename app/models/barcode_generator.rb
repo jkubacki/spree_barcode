@@ -31,7 +31,7 @@ class BarcodeGenerator
     file_name = "#{variant.sku}-#{Time.now}.pdf"
     pdf_file= "#{pdf_location}/#{file_name}"
     # pdf_location = "/home/kuba/Dropbox/barcodes/#{variant.sku}-#{Time.now}.pdf"
-    Prawn::Document.generate(pdf_file, margin: 3, page_size: [145, 85]) do
+    Prawn::Document.generate(pdf_file, margin: 2, page_size: [145, 85]) do
       font_families.update('Open Sans' => {normal: './app/assets/fonts/open_sans.ttf'})
       font_families.update('Open Sans Bold' => {normal: './app/assets/fonts/open_sans_bold.ttf'})
       quantity.times do |i|
@@ -44,7 +44,7 @@ class BarcodeGenerator
         move_down 2
         font_size 6.5
         font 'Open Sans Bold'
-        bounding_box([0, cursor], width: 145, height: 13, overflow: :turncate) do
+        bounding_box([0, cursor], width: 145, height: 14, overflow: :turncate) do
           text variant.name, align: :center
           # text variant.name, align: :center
         end
