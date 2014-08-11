@@ -2,11 +2,13 @@ class Spree::Admin::BarcodesController < Spree::Admin::BaseController
 
   def variant
     skus = barcodes_params[:barcode_form][:sku].split
-    barcodes_params[:barcode_form][:sku_text] =
-    if skus.blank? then skus = barcodes_params[:barcode_form][:sku_text].split(',').values end
+    sku_text = barcodes_params[:barcode_form][:sku_text]
+    sku_text.strip!
+    if skus.blank? then skus = sku_text.split(',').uniq end
     barcode_generator = BarcodeGenerator.new
     errors = []
     files = []
+    puts skus.inspect
 
     pdf_location = 'uploads/barcodes/pdf'
     FileUtils.mkdir_p pdf_location unless Dir.exists? pdf_location
